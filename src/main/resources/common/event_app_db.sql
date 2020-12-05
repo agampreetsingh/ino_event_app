@@ -13,12 +13,10 @@
 
 
 -- Dumping database structure for ino_event_app_original
-DROP DATABASE IF EXISTS `ino_event_app_original`;
 CREATE DATABASE IF NOT EXISTS `ino_event_app_original` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
 USE `ino_event_app_original`;
 
 -- Dumping structure for table ino_event_app_original.city
-DROP TABLE IF EXISTS `city`;
 CREATE TABLE IF NOT EXISTS `city` (
   `ID` int NOT NULL,
   `CITY` varchar(100) DEFAULT NULL,
@@ -33,7 +31,6 @@ CREATE TABLE IF NOT EXISTS `city` (
 /*!40000 ALTER TABLE `city` ENABLE KEYS */;
 
 -- Dumping structure for table ino_event_app_original.country
-DROP TABLE IF EXISTS `country`;
 CREATE TABLE IF NOT EXISTS `country` (
   `ID` int NOT NULL,
   `NAME` varchar(100) DEFAULT NULL,
@@ -45,7 +42,6 @@ CREATE TABLE IF NOT EXISTS `country` (
 /*!40000 ALTER TABLE `country` ENABLE KEYS */;
 
 -- Dumping structure for table ino_event_app_original.disctrict
-DROP TABLE IF EXISTS `disctrict`;
 CREATE TABLE IF NOT EXISTS `disctrict` (
   `ID` int NOT NULL,
   `NAME` varchar(100) NOT NULL DEFAULT '',
@@ -55,8 +51,11 @@ CREATE TABLE IF NOT EXISTS `disctrict` (
   CONSTRAINT `FK_DISTRICT_STATE` FOREIGN KEY (`STATE_ID`) REFERENCES `state` (`ID`)
 );
 
+-- Dumping data for table ino_event_app_original.disctrict: ~0 rows (approximately)
+/*!40000 ALTER TABLE `disctrict` DISABLE KEYS */;
+/*!40000 ALTER TABLE `disctrict` ENABLE KEYS */;
+
 -- Dumping structure for table ino_event_app_original.role
-DROP TABLE IF EXISTS `role`;
 CREATE TABLE IF NOT EXISTS `role` (
   `ID` int NOT NULL,
   `NAME` varchar(50) NOT NULL,
@@ -73,7 +72,6 @@ INSERT INTO `role` (`ID`, `NAME`) VALUES
 /*!40000 ALTER TABLE `role` ENABLE KEYS */;
 
 -- Dumping structure for table ino_event_app_original.state
-DROP TABLE IF EXISTS `state`;
 CREATE TABLE IF NOT EXISTS `state` (
   `ID` int NOT NULL,
   `NAME` varchar(100) NOT NULL DEFAULT '',
@@ -83,8 +81,11 @@ CREATE TABLE IF NOT EXISTS `state` (
   CONSTRAINT `FK_STATE_ZONE` FOREIGN KEY (`ZONE_ID`) REFERENCES `zone` (`ID`)
 );
 
+-- Dumping data for table ino_event_app_original.state: ~0 rows (approximately)
+/*!40000 ALTER TABLE `state` DISABLE KEYS */;
+/*!40000 ALTER TABLE `state` ENABLE KEYS */;
+
 -- Dumping structure for table ino_event_app_original.status
-DROP TABLE IF EXISTS `status`;
 CREATE TABLE IF NOT EXISTS `status` (
   `ID` int NOT NULL,
   `NAME` varchar(50) NOT NULL,
@@ -101,7 +102,6 @@ INSERT INTO `status` (`ID`, `NAME`) VALUES
 /*!40000 ALTER TABLE `status` ENABLE KEYS */;
 
 -- Dumping structure for table ino_event_app_original.user
-DROP TABLE IF EXISTS `user`;
 CREATE TABLE IF NOT EXISTS `user` (
   `ID` int NOT NULL,
   `EMAIL` varchar(200) NOT NULL,
@@ -118,10 +118,12 @@ CREATE TABLE IF NOT EXISTS `user` (
   `CREATED_ON` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `UPDATED_ON` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`ID`),
+  KEY `FK_USER_CITY` (`CITY_ID`),
   KEY `FK_USER_ROLE` (`ROLE`),
   KEY `FK_USER_STATUS` (`STATUS`),
-  KEY `FK_USER_CITY` (`CITY_ID`),
-  CONSTRAINT `FK_USER_CITY` FOREIGN KEY (`CITY_ID`) REFERENCES `city` (`ID`)
+  CONSTRAINT `FK_USER_CITY` FOREIGN KEY (`CITY_ID`) REFERENCES `city` (`ID`),
+  CONSTRAINT `FK_USER_ROLE` FOREIGN KEY (`ROLE`) REFERENCES `role` (`ID`),
+  CONSTRAINT `FK_USER_STATUS` FOREIGN KEY (`STATUS`) REFERENCES `status` (`ID`)
 );
 
 -- Dumping data for table ino_event_app_original.user: ~0 rows (approximately)
@@ -129,7 +131,6 @@ CREATE TABLE IF NOT EXISTS `user` (
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 
 -- Dumping structure for table ino_event_app_original.zone
-DROP TABLE IF EXISTS `zone`;
 CREATE TABLE IF NOT EXISTS `zone` (
   `ID` int NOT NULL,
   `NAME` varchar(100) DEFAULT NULL,
