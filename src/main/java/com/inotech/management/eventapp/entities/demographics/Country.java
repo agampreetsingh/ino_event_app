@@ -24,8 +24,8 @@ public class Country implements Serializable {
     private String name;
 
     //bi-directional many-to-one association to Zone
-    @OneToMany(mappedBy = "country")
-    private List<Zone> zones;
+    //@OneToMany(mappedBy = "country")
+    //private List<Zone> zones;
 
     public Country() {
     }
@@ -46,24 +46,24 @@ public class Country implements Serializable {
         this.name = name;
     }
 
-    public List<Zone> getZones() {
-        return this.zones;
-    }
+  //  public List<Zone> getZones() {
+     //   return this.zones;
+   // }
 
-    public void setZones(List<Zone> zones) {
-        this.zones = zones;
-    }
+   // public void setZones(List<Zone> zones) {
+     //   this.zones = zones;
+    //}
 
-    public Zone addZone(Zone zone) {
-        getZones().add(zone);
-        zone.setCountry(this);
-        return zone;
-    }
+   // public Zone addZone(Zone zone) {
+    //    getZones().add(zone);
+     //   zone.setCountry(this);
+      //  return zone;
+    //}
 
-    public Zone removeZone(Zone zone) {
-        getZones().remove(zone);
-        zone.setCountry(null);
-        return zone;
-    }
+   // public Zone removeZone(Zone zone) {
+   //     getZones().remove(zone);
+   //     zone.setCountry(null);
+   //     return zone;
+   // }
 
 }

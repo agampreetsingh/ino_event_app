@@ -1,5 +1,8 @@
 package com.inotech.management.eventapp.entities.common;
 
+import com.inotech.management.eventapp.entities.TestClass;
+import com.inotech.management.eventapp.entities.demographics.District;
+
 import java.io.Serializable;
 import javax.persistence.*;
 
@@ -21,11 +24,17 @@ public class Status implements Serializable {
     @Column(nullable = false, length = 50)
     private String name;
 
+
+    //bi-directional many-to-one association to District
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "Test_id", nullable = false)
+    private TestClass testClass;
+
     public Status() {
     }
 
     public int getId() {
-        return this.id;
+        return id;
     }
 
     public void setId(int id) {
@@ -33,11 +42,18 @@ public class Status implements Serializable {
     }
 
     public String getName() {
-        return this.name;
+        return name;
     }
 
     public void setName(String name) {
         this.name = name;
     }
 
+    public TestClass getTestClass() {
+        return testClass;
+    }
+
+    public void setTestClass(TestClass testClass) {
+        this.testClass = testClass;
+    }
 }

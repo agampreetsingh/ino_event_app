@@ -23,8 +23,8 @@ public class District implements Serializable {
     private String name;
 
     //bi-directional many-to-one association to City
-    @OneToMany(mappedBy = "disctrict")
-    private List<City> cities;
+  /*  @OneToMany(mappedBy = "district")
+    private List<City> cities;*/
 
     //bi-directional many-to-one association to State
     @ManyToOne(fetch = FetchType.LAZY)
@@ -50,7 +50,7 @@ public class District implements Serializable {
         this.name = name;
     }
 
-    public List<City> getCities() {
+   /* public List<City> getCities() {
         return this.cities;
     }
 
@@ -68,7 +68,7 @@ public class District implements Serializable {
         getCities().remove(city);
         city.setDistrict(null);
         return city;
-    }
+    }*/
 
     public State getState() {
         return this.state;

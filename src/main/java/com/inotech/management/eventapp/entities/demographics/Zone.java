@@ -23,8 +23,8 @@ public class Zone implements Serializable {
     private String name;
 
     //bi-directional many-to-one association to State
-    @OneToMany(mappedBy = "zone")
-    private List<State> states;
+   /* @OneToMany(mappedBy = "zone")
+    private List<State> states;*/
 
     //bi-directional many-to-one association to Country
     @ManyToOne(fetch = FetchType.LAZY)
@@ -50,15 +50,15 @@ public class Zone implements Serializable {
         this.name = name;
     }
 
-    public List<State> getStates() {
+ /*   public List<State> getStates() {
         return this.states;
     }
 
     public void setStates(List<State> states) {
         this.states = states;
     }
-
-    public State addState(State state) {
+*/
+ /*   public State addState(State state) {
         getStates().add(state);
         state.setZone(this);
         return state;
@@ -68,7 +68,7 @@ public class Zone implements Serializable {
         getStates().remove(state);
         state.setZone(null);
         return state;
-    }
+    }*/
 
     public Country getCountry() {
         return this.country;
