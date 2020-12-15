@@ -23,15 +23,19 @@ public class State implements Serializable {
     private String name;
 
     //bi-directional many-to-one association to District
-    @OneToMany(mappedBy = "state")
+    @OneToMany(mappedBy = "state", cascade = CascadeType.ALL)
     private List<District> districts;
 
     //bi-directional many-to-one association to Zone
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "ZONE_ID")
     private Zone zone;
 
     public State() {
+    }
+
+    public State(String stateName) {
+        this.setName(stateName);
     }
 
     public Long getId() {

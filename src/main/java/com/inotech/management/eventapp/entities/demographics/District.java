@@ -23,11 +23,11 @@ public class District implements Serializable {
     private String name;
 
     //bi-directional many-to-one association to City
-    @OneToMany(mappedBy = "disctrict")
+    @OneToMany(mappedBy = "district", cascade = CascadeType.ALL)
     private List<City> cities;
 
     //bi-directional many-to-one association to State
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "STATE_ID", nullable = false)
     private State state;
 
