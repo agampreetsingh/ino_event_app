@@ -24,7 +24,7 @@ public class Country implements Serializable {
     private String name;
 
     //bi-directional many-to-one association to Zone
-    @OneToMany(mappedBy = "country")
+    @OneToMany(mappedBy = "country", cascade = CascadeType.ALL)
     private List<Zone> zones;
 
     public Country() {

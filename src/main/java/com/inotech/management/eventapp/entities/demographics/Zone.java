@@ -23,11 +23,11 @@ public class Zone implements Serializable {
     private String name;
 
     //bi-directional many-to-one association to State
-    @OneToMany(mappedBy = "zone")
+    @OneToMany(mappedBy = "zone", cascade = CascadeType.ALL)
     private List<State> states;
 
     //bi-directional many-to-one association to Country
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "COUNTRY_ID")
     private Country country;
 
