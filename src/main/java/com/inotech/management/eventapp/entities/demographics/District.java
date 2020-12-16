@@ -17,28 +17,28 @@ public class District implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID", unique = true, nullable = false)
-    private Long id;
+    private Integer id;
 
     @Column(name = "NAME", nullable = false, length = 100)
     private String name;
-
+/*
     //bi-directional many-to-one association to City
-    @OneToMany(mappedBy = "disctrict")
+    @OneToMany(mappedBy = "district")
     private List<City> cities;
-
+*/
     //bi-directional many-to-one association to State
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "STATE_ID", nullable = false)
     private State state;
 
     public District() {
     }
 
-    public Long getId() {
+    public Integer getId() {
         return this.id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -49,7 +49,7 @@ public class District implements Serializable {
     public void setName(String name) {
         this.name = name;
     }
-
+/*
     public List<City> getCities() {
         return this.cities;
     }
@@ -69,7 +69,7 @@ public class District implements Serializable {
         city.setDistrict(null);
         return city;
     }
-
+*/
     public State getState() {
         return this.state;
     }

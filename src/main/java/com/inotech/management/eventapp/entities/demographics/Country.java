@@ -12,29 +12,32 @@ import java.util.List;
 @Entity
 @Table(name = "country")
 @NamedQuery(name = "Country.findAll", query = "SELECT c FROM Country c")
-public class Country implements Serializable {
+public class
+
+Country implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID")
-    private Long id;
+    private Integer id;
 
     @Column(name = "NAME", length = 100)
     private String name;
 
     //bi-directional many-to-one association to Zone
-    @OneToMany(mappedBy = "country")
+  /*
+   @OneToMany(mappedBy = "country")
     private List<Zone> zones;
-
+*/
     public Country() {
     }
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -45,7 +48,7 @@ public class Country implements Serializable {
     public void setName(String name) {
         this.name = name;
     }
-
+/*
     public List<Zone> getZones() {
         return this.zones;
     }
@@ -65,5 +68,5 @@ public class Country implements Serializable {
         zone.setCountry(null);
         return zone;
     }
-
+*/
 }

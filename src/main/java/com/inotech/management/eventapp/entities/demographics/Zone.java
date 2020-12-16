@@ -17,28 +17,28 @@ public class Zone implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID", unique = true, nullable = false)
-    private Long id;
+    private Integer id;
 
     @Column(name = "NAME", length = 100)
     private String name;
-
+/*
     //bi-directional many-to-one association to State
     @OneToMany(mappedBy = "zone")
     private List<State> states;
-
+*/
     //bi-directional many-to-one association to Country
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "COUNTRY_ID")
     private Country country;
 
     public Zone() {
     }
 
-    public Long getId() {
+    public Integer getId() {
         return this.id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -49,7 +49,7 @@ public class Zone implements Serializable {
     public void setName(String name) {
         this.name = name;
     }
-
+/*
     public List<State> getStates() {
         return this.states;
     }
@@ -69,7 +69,7 @@ public class Zone implements Serializable {
         state.setZone(null);
         return state;
     }
-
+*/
     public Country getCountry() {
         return this.country;
     }
