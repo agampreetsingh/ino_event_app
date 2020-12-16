@@ -24,7 +24,7 @@ public class User implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID")
-    private Long id;
+    private Integer id;
 
     @Column(name = "ADDRESS", nullable = false, length = 500)
     private String address;
@@ -50,31 +50,31 @@ public class User implements Serializable {
     @Column(name = "PINCODE", nullable = false, length = 500)
     private String pincode;
 
-    @Column(name = "ROLE", nullable = false)
-    private Role role;
+   // @Column(name = "ROLE_ID", nullable = false)
+    //private Role role;
 
-    @Column(name = "STATUS", nullable = false)
-    private Status status;
+    //@Column(name = "STATUS", nullable = false)
+   // private Status status;
 
     @Column(nullable = false, length = 200)
     private String token;
 
     @Column(name = "UPDATED_ON", nullable = false)
     private Timestamp updatedOn;
-
+/*
     //bi-directional many-to-one association to City
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "CITY_ID", nullable = false)
     private City city;
-
+*/
     public User() {
     }
 
-    public Long getId() {
+    public Integer getId() {
         return this.id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -141,7 +141,7 @@ public class User implements Serializable {
     public void setPincode(String pincode) {
         this.pincode = pincode;
     }
-
+/*
     public Role getRole() {
         return this.role;
     }
@@ -157,7 +157,7 @@ public class User implements Serializable {
     public void setStatus(Status status) {
         this.status = status;
     }
-
+*/
     public String getToken() {
         return this.token;
     }
@@ -173,7 +173,7 @@ public class User implements Serializable {
     public void setUpdatedOn(Timestamp updatedOn) {
         this.updatedOn = updatedOn;
     }
-
+/*
     public City getCity() {
         return this.city;
     }
@@ -181,5 +181,5 @@ public class User implements Serializable {
     public void setCity(City city) {
         this.city = city;
     }
-
+*/
 }

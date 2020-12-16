@@ -1,10 +1,7 @@
 package com.inotech.management.eventapp.entities.demographics;
 
-import com.inotech.management.eventapp.entities.user.User;
-
-import java.io.Serializable;
 import javax.persistence.*;
-import java.util.List;
+import java.io.Serializable;
 
 
 /**
@@ -19,28 +16,29 @@ public class City implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID", unique = true, nullable = false)
-    private Long id;
+    private Integer id;
 
     @Column(name = "NAME", length = 100)
     private String name;
 
     //bi-directional many-to-one association to District
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "DISTRICT_ID", nullable = false)
     private District district;
 
+    /*
     //bi-directional many-to-one association to User
     @OneToMany(mappedBy = "city")
     private List<User> users;
-
+*/
     public City() {
     }
 
-    public Long getId() {
+    public Integer getId() {
         return this.id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -59,7 +57,7 @@ public class City implements Serializable {
     public void setDistrict(District district) {
         this.district = district;
     }
-
+/*
     public List<User> getUsers() {
         return this.users;
     }
@@ -81,5 +79,5 @@ public class City implements Serializable {
 
         return user;
     }
-
+*/
 }
