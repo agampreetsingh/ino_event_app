@@ -1,10 +1,7 @@
 package com.inotech.management.eventapp.entities.demographics;
 
-import com.inotech.management.eventapp.entities.user.User;
-
-import java.io.Serializable;
 import javax.persistence.*;
-import java.util.List;
+import java.io.Serializable;
 
 
 /**

@@ -17,28 +17,32 @@ public class State implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID", unique = true, nullable = false)
-    private Integer id;
+    private Long id;
 
     @Column(name = "NAME", nullable = false, length = 100)
     private String name;
-/*
+
     //bi-directional many-to-one association to District
-    @OneToMany(mappedBy = "state")
+    @OneToMany(mappedBy = "state", cascade = CascadeType.ALL)
     private List<District> districts;
-*/
+
     //bi-directional many-to-one association to Zone
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "ZONE_ID")
     private Zone zone;
 
     public State() {
     }
 
-    public Integer getId() {
+    public State(String stateName) {
+        this.setName(stateName);
+    }
+
+    public Long getId() {
         return this.id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -49,14 +53,7 @@ public class State implements Serializable {
     public void setName(String name) {
         this.name = name;
     }
-    public Zone getZone() {
-        return this.zone;
-    }
 
-    public void setZone(Zone zone) {
-        this.zone = zone;
-    }
-/*
     public List<District> getDistricts() {
         return this.districts;
     }
@@ -65,18 +62,24 @@ public class State implements Serializable {
         this.districts = districts;
     }
 
-    public District addDistrict(District district) {
+    public District addDisctrict(District district) {
         getDistricts().add(district);
         district.setState(this);
         return district;
     }
 
-    public District removeDistrict(District district) {
+    public District removeDisctrict(District district) {
         getDistricts().remove(district);
         district.setState(null);
         return district;
     }
-*/
 
+    public Zone getZone() {
+        return this.zone;
+    }
+
+    public void setZone(Zone zone) {
+        this.zone = zone;
+    }
 
 }
