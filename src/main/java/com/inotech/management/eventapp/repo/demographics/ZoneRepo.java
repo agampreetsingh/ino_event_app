@@ -9,5 +9,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface ZoneRepo extends JpaRepository<Zone, Long> {
 
-    Country findByName(String name);
+    Zone findByName(String name);
 }

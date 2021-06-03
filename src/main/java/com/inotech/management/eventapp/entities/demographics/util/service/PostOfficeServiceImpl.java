@@ -9,7 +9,7 @@ import org.springframework.web.client.RestTemplate;
 @Service
 public class PostOfficeServiceImpl implements PostOfficeService {
 
-    private RestTemplate restTemplate = new RestTemplate();
+    private final RestTemplate restTemplate = new RestTemplate();
 
     @Value("${dmeographics.postal.pincode.api}")
     private String pincodeDetailsApi;

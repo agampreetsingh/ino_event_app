@@ -1,4 +1,4 @@
-package com.inotech.management.eventapp.service.dempgraphics;
+package com.inotech.management.eventapp.service.demographics;
 
 import com.inotech.management.eventapp.entities.demographics.PincodeDistrictMapping;
 import com.inotech.management.eventapp.repo.demographics.PincodeDistrictMappingRepo;
@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class PincodeDistrictMappingServiceImpl implements PincodeDistrictMappingService{
+public class PincodeDistrictMappingServiceImpl implements PincodeDistrictMappingService {
 
     @Autowired
     private PincodeDistrictMappingRepo pincodeDistrictMappingRepo;
@@ -16,4 +16,5 @@ public class PincodeDistrictMappingServiceImpl implements PincodeDistrictMapping
     public PincodeDistrictMapping addPincodeDistrictMapping(PincodeDistrictMapping pincodeDistrictMapping) {
         return pincodeDistrictMappingRepo.save(pincodeDistrictMapping);
     }
+
 }

@@ -1,5 +1,8 @@
 package com.inotech.management.eventapp.entities.demographics;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import java.io.Serializable;
 import javax.persistence.*;
 import java.util.List;
@@ -22,12 +25,13 @@ public class State implements Serializable {
     @Column(name = "NAME", nullable = false, length = 100)
     private String name;
 
-    //bi-directional many-to-one association to District
+    @JsonManagedReference
     @OneToMany(mappedBy = "state", cascade = CascadeType.ALL)
     private List<District> districts;
 
-    //bi-directional many-to-one association to Zone
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+
+    @JsonBackReference
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "ZONE_ID")
     private Zone zone;
 
@@ -62,13 +66,13 @@ public class State implements Serializable {
         this.districts = districts;
     }
 
-    public District addDisctrict(District district) {
+    public District addDistrict(District district) {
         getDistricts().add(district);
         district.setState(this);
         return district;
     }
 
-    public District removeDisctrict(District district) {
+    public District removeDistrict(District district) {
         getDistricts().remove(district);
         district.setState(null);
         return district;

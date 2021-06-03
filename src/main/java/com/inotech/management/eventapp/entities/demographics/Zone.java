@@ -1,5 +1,8 @@
 package com.inotech.management.eventapp.entities.demographics;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import java.io.Serializable;
 import javax.persistence.*;
 import java.util.List;
@@ -22,12 +25,13 @@ public class Zone implements Serializable {
     @Column(name = "NAME", length = 100)
     private String name;
 
-    //bi-directional many-to-one association to State
+    @JsonManagedReference
     @OneToMany(mappedBy = "zone", cascade = CascadeType.ALL)
     private List<State> states;
 
-    //bi-directional many-to-one association to Country
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+
+    @JsonBackReference
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "COUNTRY_ID")
     private Country country;
 

@@ -3,10 +3,10 @@ package com.inotech.management.eventapp.entities.demographics.util.service;
 import com.inotech.management.eventapp.entities.demographics.*;
 import com.inotech.management.eventapp.entities.demographics.util.entities.PincodeDetails;
 import com.inotech.management.eventapp.entities.demographics.util.entities.PostOffice;
-import com.inotech.management.eventapp.service.dempgraphics.CountryService;
-import com.inotech.management.eventapp.service.dempgraphics.DistrictService;
-import com.inotech.management.eventapp.service.dempgraphics.PincodeDistrictMappingService;
-import com.inotech.management.eventapp.service.dempgraphics.StateService;
+import com.inotech.management.eventapp.service.demographics.CountryService;
+import com.inotech.management.eventapp.service.demographics.DistrictService;
+import com.inotech.management.eventapp.service.demographics.PincodeDistrictMappingService;
+import com.inotech.management.eventapp.service.demographics.StateService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

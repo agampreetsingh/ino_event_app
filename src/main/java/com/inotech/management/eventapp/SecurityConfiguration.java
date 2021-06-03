@@ -1,4 +1,4 @@
-package com.inotech.management.eventapp;
+/*package com.inotech.management.eventapp;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -15,3 +15,11 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         security.httpBasic().disable();
     }
 }
+
+
+<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
+		</dependency>
+/
+ */
